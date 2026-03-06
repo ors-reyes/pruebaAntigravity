@@ -1,0 +1,181 @@
+/* Navbar Mobile First Strategy */
+.navbar {
+  background: rgba(15, 23, 42, 0.85); /* Slate 900 con opacidad para glassmorphism */
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.1rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+}
+
+.navbar-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  max-width: 1200px;
+  height: 70px;
+  padding: 0 20px;
+  position: relative; /* Anchor for absolute buttons */
+}
+
+.navbar-logo {
+  color: #fff;
+  justify-self: start;
+  cursor: pointer;
+  text-decoration: none;
+  font-size: 1.5rem;
+  display: flex;
+  align-items: center;
+  font-weight: 700;
+  letter-spacing: -0.5px;
+  transition: transform 0.3s ease;
+}
+
+.navbar-logo:hover {
+  transform: scale(1.05);
+}
+
+/* Menú móvil por defecto (Mobile First) */
+.nav-menu {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: calc(100vh - 70px);
+  position: absolute;
+  top: 70px;
+  left: -100%;
+  opacity: 0;
+  transition: all 0.5s ease;
+  background: rgba(15, 23, 42, 0.95);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  z-index: 999;
+}
+
+.nav-menu.active {
+  background: rgba(15, 23, 42, 0.95);
+  left: 0;
+  opacity: 1;
+  transition: all 0.5s ease;
+}
+
+.nav-item {
+  height: 80px;
+}
+
+.nav-links {
+  text-align: center;
+  padding: 2rem;
+  width: 100%;
+  display: table;
+  text-decoration: none;
+  color: #cbd5e1; /* Slate 300 */
+  font-weight: 500;
+  font-size: 1.2rem;
+  transition: all 0.2s ease;
+}
+
+.nav-links:hover {
+  color: #38bdf8; /* Sky 400 */
+  background-color: rgba(255, 255, 255, 0.05);
+}
+
+.nav-links.active {
+  color: #38bdf8;
+  font-weight: 700;
+  background-color: rgba(255, 255, 255, 0.05);
+  pointer-events: none;
+}
+
+.nav-item:has(> .nav-links.active) {
+  cursor: not-allowed;
+}
+
+.menu-icon {
+  display: block;
+  font-size: 1.8rem;
+  cursor: pointer;
+  color: #fff;
+  transition: transform 0.2s ease;
+}
+
+.menu-icon:active {
+  transform: scale(0.9);
+}
+
+/* Media Queries para pantallas más grandes (Tablets / Desktop) */
+@media screen and (min-width: 768px) {
+  .nav-menu {
+    display: flex;
+    flex-direction: row;
+    position: static;
+    width: auto;
+    height: auto;
+    background: transparent;
+    opacity: 1;
+    transform: none;
+    transition: none;
+    gap: 1rem;
+  }
+
+  .nav-item {
+    height: auto;
+  }
+
+  .nav-links {
+    padding: 0.5rem 1rem;
+    width: auto;
+    border-radius: 8px;
+    font-size: 1rem;
+  }
+
+  .nav-links:hover {
+    background-color: rgba(56, 189, 248, 0.1);
+    transform: translateY(-2px);
+  }
+
+  .nav-links.active {
+    background-color: rgba(56, 189, 248, 0.15);
+  }
+
+  .menu-icon {
+    display: none;
+  }
+
+}
+
+/* Floating Dark Mode Button (anchored to navbar) */
+.dark-mode-btn {
+  position: absolute;
+  top: calc(100% + 10px); /* 10px from the bottom of the navbar */
+  right: 10px;            /* 10px from the right of the container */
+  background-color: var(--primary);
+  color: #fff;
+  border: none;
+  border-radius: 50%;
+  width: 45px;
+  height: 45px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.4rem;
+  cursor: pointer;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s ease, background-color 0.3s ease;
+  z-index: 990; /* Right below the navbar dropdowns z-index */
+}
+
+.dark-mode-btn:hover {
+  background-color: #0284c7; /* Sky 600 */
+  transform: translateY(-4px);
+}

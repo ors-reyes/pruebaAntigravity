@@ -1,0 +1,204 @@
+/* Footer Styles - Mobile First */
+.footer {
+  background: var(--bg-dark);
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  margin-top: auto;
+  color: var(--text-muted);
+  font-size: 0.95rem;
+  position: relative; /* Agregado para el botón volver arriba */
+}
+
+/* Botón flotante Ir arriba */
+.scroll-top-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background-color: var(--primary);
+  color: #fff;
+  border: none;
+  border-radius: 50%;
+  width: 45px;
+  height: 45px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.4rem;
+  cursor: pointer;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s ease, background-color 0.3s ease;
+  z-index: 50; /* Por si el footer se achica */
+}
+
+.scroll-top-btn:hover {
+  background-color: #0284c7; /* Sky 600 */
+  transform: translateY(-4px);
+}
+
+/* Sección 1: Arriba (Dividida en 3) */
+.footer-top {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  padding: 3rem 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Las 3 secciones (Logo, Enlaces, Redes) */
+.footer-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  flex: 1; /* Para que ocupen el mismo ancho en desktop */
+}
+
+/* Ajustes específicos de columnas */
+.footer-logo {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #fff;
+  text-decoration: none;
+  margin-bottom: 0.8rem;
+  display: inline-block;
+}
+
+.footer-description {
+  max-width: 250px;
+  line-height: 1.5;
+}
+
+.footer-title {
+  color: #fff;
+  font-size: 1.1rem;
+  margin-bottom: 1rem;
+  font-weight: 600;
+}
+
+.footer-links {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  list-style: none;
+  padding: 0;
+}
+
+.footer-links a {
+  color: var(--text-muted);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.footer-links a:hover {
+  color: var(--primary);
+}
+
+.footer-links a.active {
+  color: var(--primary);
+  font-weight: 700;
+  pointer-events: none; /* Bloquea el botón/link */
+  background-color: transparent;
+  opacity: 0.9;
+}
+
+.footer-links li:has(> a.active) {
+  cursor: not-allowed;
+}
+
+.social-links {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+}
+
+.social-links a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.05);
+  color: #fff;
+  font-size: 1.2rem;
+  transition: all 0.3s ease;
+}
+
+.social-links a:hover {
+  background: var(--primary);
+  transform: translateY(-3px);
+  color: #fff;
+}
+
+/* Footer Contact Info (phone & location) */
+.footer-contact-info {
+  margin-top: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+  align-items: center; /* Center on mobile */
+}
+
+.footer-contact-item {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  color: var(--text-muted);
+  font-size: 0.95rem;
+  transition: color 0.3s ease;
+  text-decoration: none; /* Asegura que el hipervínculo no tenga subrayado */
+}
+
+.footer-contact-item:hover {
+  color: #fff;
+}
+
+.footer-contact-item svg {
+  color: var(--primary);
+  font-size: 1.2rem;
+  flex-shrink: 0;
+}
+
+.social-links.map-single-icon {
+  width: 100%;
+  justify-content: center;
+  margin-top: 0.5rem;
+}
+
+/* Sección 2: Abajo (Copyright) */
+.footer-bottom {
+  text-align: center;
+  padding: 1.5rem 2rem;
+  background: var(--bg-darker);
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  font-size: 0.85rem;
+}
+
+.footer-address {
+  margin-bottom: 0.5rem;
+  color: var(--text-muted);
+  font-size: 0.95rem;
+}
+
+/* Responsive: Tablets y Desktop (a partir de 768px) */
+@media screen and (min-width: 768px) {
+  .footer-top {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 4rem 2rem;
+  }
+  
+  .footer-section {
+    align-items: flex-start;
+    text-align: left;
+  }
+  
+  .social-links {
+    justify-content: flex-start;
+  }
+  
+  .footer-contact-info {
+    align-items: flex-start; /* Align to the left on desktop */
+  }
+}
